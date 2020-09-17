@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: lol
+    uniqueID: 1853712551
+    locked: 0
