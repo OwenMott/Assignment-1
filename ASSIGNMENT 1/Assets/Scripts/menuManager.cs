@@ -11,6 +11,10 @@ public class menuManager : MonoBehaviour {
     public GameObject pointer;
     public GameObject playerNumber;
     public GameObject[] pointerPostions;
+    public GameObject[] levels;
+     
+
+
     Text actualNum;
 
    
@@ -60,8 +64,10 @@ public class menuManager : MonoBehaviour {
 
         if (Input.GetKeyDown("return") && onButton == true)
         {
-            player.SetActive(true);
+            //player.SetActive(true);
+            //Instantiate();
             menu.SetActive(false);
+            levels[0].SetActive(true);
 
         }
         //if return is pressed and onButton equals false
