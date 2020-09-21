@@ -7,11 +7,16 @@ public class menuManager : MonoBehaviour {
 
 
     public GameObject player;
+    public GameObject playerPrefab;
+    public GameObject player1Spawn;
     public GameObject menu;
     public GameObject pointer;
     public GameObject playerNumber;
     public GameObject[] pointerPostions;
     public GameObject[] levels;
+    public GameObject playArea;
+    public Camera mainCamera;
+    public Camera playCamera;
      
 
 
@@ -64,10 +69,24 @@ public class menuManager : MonoBehaviour {
 
         if (Input.GetKeyDown("return") && onButton == true)
         {
-            //player.SetActive(true);
-            //Instantiate();
-            menu.SetActive(false);
-            levels[0].SetActive(true);
+            if (actualNum.text == "1")
+            {
+                Instantiate(playerPrefab, player1Spawn.transform.position, Quaternion.identity);
+                menu.SetActive(false);
+                levels[0].SetActive(true);
+
+                mainCamera.enabled = false;
+                playCamera.enabled = true;
+                playArea.SetActive(true);
+            }
+            else
+            {
+                Instantiate(playerPrefab, new Vector3(-1, -4.5f, 0), Quaternion.identity);
+                Instantiate(playerPrefab, new Vector3(1, -4.5f, 0), Quaternion.identity);
+                menu.SetActive(false);
+                levels[0].SetActive(true);
+            }
+            
 
         }
         //if return is pressed and onButton equals false
