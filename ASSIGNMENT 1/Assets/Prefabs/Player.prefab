@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 58985513999747390}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a8e784d4c658a43b6b8b80e2222146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1951733826950626, guid: c9d30d3f0a1c5d944b53e42763ff4960,
+    type: 2}
 --- !u!212 &212285686795861196
 SpriteRenderer:
   m_ObjectHideFlags: 1

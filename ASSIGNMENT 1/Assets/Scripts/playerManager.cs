@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class playerManager : MonoBehaviour {
 
+    public GameObject bulletPrefab;
+
     Rigidbody2D rb2d;
     Animator anim;
     SpriteRenderer sprite;
+    string facing;
+
 
 
 	// Use this for initialization
@@ -51,6 +55,16 @@ public class playerManager : MonoBehaviour {
 
             anim.Play("");
 
+        }
+
+
+        //spacebar pressed, bullet schut
+        if (Input.GetKeyDown("space"))
+        {
+            GameObject thisBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Rigidbody2D bulletRB2D = thisBullet.GetComponent<Rigidbody2D>();
+
+            bulletRB2D.velocity = new Vector2(0,10);
         }
 
     }

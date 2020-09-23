@@ -85,6 +85,10 @@ public class menuManager : MonoBehaviour {
                 Instantiate(playerPrefab, new Vector3(1, -4.5f, 0), Quaternion.identity);
                 menu.SetActive(false);
                 levels[0].SetActive(true);
+
+                mainCamera.enabled = false;
+                playCamera.enabled = true;
+                playArea.SetActive(true);
             }
             
 
