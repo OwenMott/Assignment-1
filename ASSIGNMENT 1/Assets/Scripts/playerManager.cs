@@ -9,7 +9,7 @@ public class playerManager : MonoBehaviour {
     Rigidbody2D rb2d;
     Animator anim;
     SpriteRenderer sprite;
-    string facing;
+    int facing;
 
 
 
@@ -30,24 +30,28 @@ public class playerManager : MonoBehaviour {
             rb2d.velocity = new Vector2(0, 2);
             anim.Play("PlayerMove");
             sprite.flipY = false;
+            facing = 1;
         }
         else if (Input.GetKey("s") || Input.GetKey("down"))
         {
             rb2d.velocity = new Vector2(0, -2);
             anim.Play("PlayerMove");
             sprite.flipY = true;
+            facing = 2;
         }
         else if (Input.GetKey("d") || Input.GetKey("right"))
         {
             rb2d.velocity = new Vector2(2, 0);
             anim.Play("PlayerMoveLR");
             sprite.flipX = false;
+            facing = 3;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
             rb2d.velocity = new Vector2(-2, 0);
             anim.Play("PlayerMoveLR");
             sprite.flipX = true;
+            facing = 4;
         }
         else
         {
@@ -64,7 +68,54 @@ public class playerManager : MonoBehaviour {
             GameObject thisBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D bulletRB2D = thisBullet.GetComponent<Rigidbody2D>();
 
-            bulletRB2D.velocity = new Vector2(0,10);
+            switch (facing)
+            {
+                case 1:
+                    bulletRB2D.velocity = new Vector2(0, 10);
+                    break;
+
+                case 2:
+                    bulletRB2D.velocity = new Vector2(0, -10);
+                    bulletRB2D.rotation = 180;
+                    break;
+                case 3:
+                    bulletRB2D.velocity = new Vector2(10, 0);
+                    bulletRB2D.rotation = 270;
+                    break;
+                case 4:
+                    bulletRB2D.velocity = new Vector2(-10, 0);
+                    bulletRB2D.rotation = 90;
+                    break;
+                default:
+                    bulletRB2D.velocity = new Vector2(0, 10);
+                    break;
+                    
+            }
+
+
+
+
+            //if (facing == "up")
+            //{
+            //    bulletRB2D.velocity = new Vector2(0, 10);
+            //} 
+            //else if (facing == "down") 
+            //{
+            //    bulletRB2D.velocity = new Vector2(0, -10);
+            //    bulletRB2D.rotation = 180;
+            //}
+            //else if (facing == "right")
+            //{
+            //    bulletRB2D.velocity = new Vector2(10, 0);
+            //    bulletRB2D.rotation = 270;
+            //}
+            //else if (facing == "left")
+            //{
+            //    bulletRB2D.velocity = new Vector2(-10, 0);
+            //    bulletRB2D.rotation = 90;
+            //}
+
+
         }
 
     }

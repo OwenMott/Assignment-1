@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour {
 
+    public GameObject smallExplosion;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -17,7 +19,9 @@ public class bullet : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == null )
-        {return;   }
+        {
+            Destroy(gameObject);
+            return;   }
 
         if (other.CompareTag("Player"))
         {
@@ -26,6 +30,8 @@ public class bullet : MonoBehaviour {
         }
         else {
             Debug.Log("gottem lol");
+            Destroy(gameObject);
+            Instantiate(smallExplosion, gameObject.transform.position, Quaternion.identity);
         }
     }
 }
