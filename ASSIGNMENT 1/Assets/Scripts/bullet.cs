@@ -23,13 +23,13 @@ public class bullet : MonoBehaviour {
             Destroy(gameObject);
             return;   }
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(gameObject.tag ))
         {
-            //Debug.Log("Hit!");
+            //Debug.Log("Hitself");
 
         }
         else {
-            Debug.Log("gottem lol");
+            //Debug.Log("gottem lol");
             Destroy(gameObject);
             Instantiate(smallExplosion, gameObject.transform.position, Quaternion.identity);
         }

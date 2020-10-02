@@ -7,8 +7,12 @@ public class enemyAI : MonoBehaviour
 {
 
     bool canFire = true;
-    int chanceToFire = 5;
+    bool canMove = true;
+    int chanceToFire = 20;
+    int chanceToMove = 20;
     int randomNumber;
+    int moveRandomNumber;
+    int moveChanceRandomNumber;
 
     public GameObject bulletPrefab;
     Rigidbody2D rb2d;
@@ -17,11 +21,13 @@ public class enemyAI : MonoBehaviour
     int facing;
 
     DateTime timeSinceLastDecision = DateTime.Now;
-    TimeSpan aiCooldown = TimeSpan.FromSeconds(1);
+    TimeSpan aiCooldown;
 
     // Start is called before the first frame update
     void Start()
     {
+        aiCooldown = TimeSpan.FromMilliseconds(UnityEngine.Random.Range(800, 2000));
+        Debug.Log(aiCooldown);
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
@@ -32,46 +38,58 @@ public class enemyAI : MonoBehaviour
     {
 
         randomNumber = UnityEngine.Random.Range(0, 100);
+        moveRandomNumber = UnityEngine.Random.Range(1, 6);
+        moveChanceRandomNumber = UnityEngine.Random.Range(0, 100);
+        //Debug.Log(moveRandomNumber);
+        if (moveChanceRandomNumber < chanceToMove)
+        {
+            if (canMove)
+            {
+                canMove = false;
+                if (moveRandomNumber == 1)
+                {
+                    rb2d.velocity = new Vector2(0, 1);
+                    anim.Play("Enemy1");
+                    sprite.flipY = false;
+                    facing = 1;
+                }
+                else if (moveRandomNumber == 2)
+                {
+                    rb2d.velocity = new Vector2(0, -1);
+                    anim.Play("Enemy1");
+                    sprite.flipY = true;
+                    facing = 2;
+                }
+                else if (moveRandomNumber == 3)
+                {
+                    rb2d.velocity = new Vector2(1, 0);
+                    anim.Play("Enemy1-2");
+                    sprite.flipX = false;
+                    facing = 3;
+                }
+                else if (moveRandomNumber == 4)
+                {
+                    rb2d.velocity = new Vector2(-1, 0);
+                    anim.Play("Enemy1-2");
+                    sprite.flipX = true;
+                    facing = 4;
+                }
+                else if(moveRandomNumber == 5)
+                {
+                    rb2d.velocity = new Vector2(0, 0);
 
-        if (Input.GetKey("w") || Input.GetKey("up"))
-        {
-            rb2d.velocity = new Vector2(0, 2);
-            anim.Play("PlayerMove");
-            sprite.flipY = false;
-            facing = 1;
-        }
-        else if (Input.GetKey("s") || Input.GetKey("down"))
-        {
-            rb2d.velocity = new Vector2(0, -2);
-            anim.Play("PlayerMove");
-            sprite.flipY = true;
-            facing = 2;
-        }
-        else if (Input.GetKey("d") || Input.GetKey("right"))
-        {
-            rb2d.velocity = new Vector2(2, 0);
-            anim.Play("PlayerMoveLR");
-            sprite.flipX = false;
-            facing = 3;
-        }
-        else if (Input.GetKey("a") || Input.GetKey("left"))
-        {
-            rb2d.velocity = new Vector2(-2, 0);
-            anim.Play("PlayerMoveLR");
-            sprite.flipX = true;
-            facing = 4;
-        }
-        else
-        {
-            rb2d.velocity = new Vector2(0, 0);
+                    anim.Play("");
 
-            anim.Play("");
+                }
+            }
 
         }
 
         if (DateTime.Now > timeSinceLastDecision + aiCooldown)
         {
             timeSinceLastDecision = DateTime.Now;
+            canFire = true;
+            canMove = true;
         }
         else
         {
@@ -99,6 +117,8 @@ public class enemyAI : MonoBehaviour
             GameObject thisBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D bulletRB2D = thisBullet.GetComponent<Rigidbody2D>();
 
+        
+
             switch (facing)
             {
                 case 1:
@@ -107,15 +127,15 @@ public class enemyAI : MonoBehaviour
 
                 case 2:
                     bulletRB2D.velocity = new Vector2(0, -10);
-                    bulletRB2D.rotation = 180;
+                    bulletRB2D.rotation = rb2d.rotation + 180;
                     break;
                 case 3:
                     bulletRB2D.velocity = new Vector2(10, 0);
-                    bulletRB2D.rotation = 270;
+                    bulletRB2D.rotation = rb2d.rotation + 270;
                     break;
                 case 4:
                     bulletRB2D.velocity = new Vector2(-10, 0);
-                    bulletRB2D.rotation = 90;
+                    bulletRB2D.rotation = rb2d.rotation + 90;
                     break;
                 default:
                     bulletRB2D.velocity = new Vector2(0, 10);

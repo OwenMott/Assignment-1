@@ -8,6 +8,18 @@ TextureImporter:
   - first:
       213: -9109885162662172588
     second: Enemy1Spritesheet_1
+  - first:
+      213: -3232640272854379763
+    second: Enemy1Spritesheet_0
+  - first:
+      213: 530527175027784280
+    second: Enemy1Spritesheet_1
+  - first:
+      213: 7896877027431172305
+    second: Enemy1Spritesheet_2
+  - first:
+      213: 5484100809557008534
+    second: Enemy1Spritesheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,6 +109,48 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0394e19cca5323d0800000000000000
+      internalID: -3232640272854379763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy1Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85af833a7afcc5700800000000000000
+      internalID: 530527175027784280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy1Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 64
         height: 64
@@ -107,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0b2127e28bad0080800000000000000
-      internalID: -9219524283445728501
+      spriteID: 1d84af621d7579d60800000000000000
+      internalID: 7896877027431172305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy1Spritesheet_1
+      name: Enemy1Spritesheet_3
       rect:
         serializedVersion: 2
         x: 64
@@ -128,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4586be6f5bf239180800000000000000
-      internalID: -9109885162662172588
+      spriteID: 690e31a51a07b1c40800000000000000
+      internalID: 5484100809557008534
       vertices: []
       indices: 
       edges: []

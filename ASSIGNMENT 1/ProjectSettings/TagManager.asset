@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Enemy
+  - Flag
+  - Menu
+  - PlayArea
+  - EndGameScreen
   layers:
   - Default
   - TransparentFX

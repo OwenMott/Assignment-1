@@ -8,6 +8,15 @@ TextureImporter:
   - first:
       213: 21300002
     second: Placeables_1
+  - first:
+      213: 8160017943246448691
+    second: Placeables_0
+  - first:
+      213: -837306997801397311
+    second: Placeables_1
+  - first:
+      213: -5278613145871763546
+    second: Placeables_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -107,8 +116,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02305410000000000800000000000000
-      internalID: 21300000
+      spriteID: 338a404f5153e3170800000000000000
+      internalID: 8160017943246448691
       vertices: []
       indices: 
       edges: []
@@ -128,8 +137,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22305410000000000800000000000000
-      internalID: 21300002
+      spriteID: 1c35914c8b94164f0800000000000000
+      internalID: -837306997801397311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Placeables_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a73b95af499eb6b0800000000000000
+      internalID: -5278613145871763546
       vertices: []
       indices: 
       edges: []
@@ -137,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e72482b1d9b380144b31d3a609ec762c
     internalID: 0
     vertices: []
     indices: 
