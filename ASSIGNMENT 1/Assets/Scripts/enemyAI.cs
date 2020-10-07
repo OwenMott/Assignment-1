@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,13 +20,13 @@ public class enemyAI : MonoBehaviour
     SpriteRenderer sprite;
     int facing;
 
-    DateTime timeSinceLastDecision = DateTime.Now;
-    TimeSpan aiCooldown;
+    System.DateTime timeSinceLastDecision = System.DateTime.Now;
+    System.TimeSpan aiCooldown;
 
     // Start is called before the first frame update
     void Start()
     {
-        aiCooldown = TimeSpan.FromMilliseconds(UnityEngine.Random.Range(800, 2000));
+        aiCooldown = System.TimeSpan.FromMilliseconds(UnityEngine.Random.Range(800, 2000));
         Debug.Log(aiCooldown);
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -74,20 +74,26 @@ public class enemyAI : MonoBehaviour
                     sprite.flipX = true;
                     facing = 4;
                 }
-                else if(moveRandomNumber == 5)
+                else if (moveRandomNumber == 5)
                 {
                     rb2d.velocity = new Vector2(0, 0);
 
                     anim.Play("");
 
                 }
+                else 
+                {
+                    rb2d.velocity = new Vector2(0, 0);
+
+                    anim.Play("");
+                }
             }
 
         }
 
-        if (DateTime.Now > timeSinceLastDecision + aiCooldown)
+        if (System.DateTime.Now > timeSinceLastDecision + aiCooldown)
         {
-            timeSinceLastDecision = DateTime.Now;
+            timeSinceLastDecision = System.DateTime.Now;
             canFire = true;
             canMove = true;
         }

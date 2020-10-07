@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,16 +11,20 @@ public class playerManager : MonoBehaviour {
     Animator anim;
     SpriteRenderer sprite;
     int facing;
+    bool canShoot = true;
 
+    DateTime timeSinceShot;
+    TimeSpan shootCooldown;
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Debug.Log("its working");
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-	}
+        shootCooldown = TimeSpan.FromMilliseconds(3000);
+        timeSinceShot = DateTime.Now;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,28 +32,28 @@ public class playerManager : MonoBehaviour {
 
         if (Input.GetKey("w") || Input.GetKey("up"))
         {
-            rb2d.velocity = new Vector2(0, 2);
+            rb2d.velocity = new Vector2(0, 1);
             anim.Play("PlayerMove");
             sprite.flipY = false;
             facing = 1;
         }
         else if (Input.GetKey("s") || Input.GetKey("down"))
         {
-            rb2d.velocity = new Vector2(0, -2);
+            rb2d.velocity = new Vector2(0, -1);
             anim.Play("PlayerMove");
             sprite.flipY = true;
             facing = 2;
         }
         else if (Input.GetKey("d") || Input.GetKey("right"))
         {
-            rb2d.velocity = new Vector2(2, 0);
+            rb2d.velocity = new Vector2(1, 0);
             anim.Play("PlayerMoveLR");
             sprite.flipX = false;
             facing = 3;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
-            rb2d.velocity = new Vector2(-2, 0);
+            rb2d.velocity = new Vector2(-1, 0);
             anim.Play("PlayerMoveLR");
             sprite.flipX = true;
             facing = 4;
@@ -63,11 +68,12 @@ public class playerManager : MonoBehaviour {
 
 
         //spacebar pressed, bullet schut
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && canShoot == true)
         {
             GameObject thisBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D bulletRB2D = thisBullet.GetComponent<Rigidbody2D>();
-
+            canShoot = false;
+            timeSinceShot = DateTime.Now;
             switch (facing)
             {
                 case 1:
@@ -92,8 +98,8 @@ public class playerManager : MonoBehaviour {
                     
             }
 
-
-
+            //wait an amount of time then set canShoot back to true
+           
 
             //if (facing == "up")
             //{
@@ -116,6 +122,21 @@ public class playerManager : MonoBehaviour {
             //}
 
 
+        }
+
+        if (DateTime.Now > timeSinceShot + shootCooldown)
+        {
+
+            canShoot = true;
+
+            //Debug.Log(DateTime.Now);
+            //Debug.Log(timeSinceShot + shootCooldown);
+
+        }
+        else
+        {
+            //Debug.Log(DateTime.Now);
+            //Debug.Log(timeSinceShot + shootCooldown);
         }
 
     }

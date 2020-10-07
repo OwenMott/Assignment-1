@@ -10,6 +10,9 @@ TagManager:
   - Menu
   - PlayArea
   - EndGameScreen
+  - Placeable
+  - Unbreakable
+  - Level
   layers:
   - Default
   - TransparentFX

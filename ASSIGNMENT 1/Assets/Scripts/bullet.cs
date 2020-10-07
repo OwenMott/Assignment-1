@@ -21,17 +21,37 @@ public class bullet : MonoBehaviour {
         if (other.gameObject == null )
         {
             Destroy(gameObject);
-            return;   }
+            return;   
+        }
 
-        if (other.CompareTag(gameObject.tag ))
+        if (other.CompareTag(gameObject.tag))
         {
             //Debug.Log("Hitself");
 
         }
-        else {
+        else if (other.CompareTag("Unbreakable"))
+        {
+            Debug.Log("hit unbreakable");
+            Destroy(gameObject);
+
+        } 
+        else
+        {
             //Debug.Log("gottem lol");
             Destroy(gameObject);
             Instantiate(smallExplosion, gameObject.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+
+            //if other.gameobject is player end game
+            if (other.gameObject.CompareTag("Player"))
+            {
+                GameManager.flagDestroyed();
+            }
+            //if other.gameobject is an enemy then add points
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+
+            }
         }
     }
 }

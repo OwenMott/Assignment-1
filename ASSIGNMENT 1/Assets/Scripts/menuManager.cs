@@ -17,12 +17,13 @@ public class menuManager : MonoBehaviour {
     public GameObject playArea;
     public Camera mainCamera;
     public Camera playCamera;
-     
 
+    GameObject level1PreFab;
+    notGoingIn notGoingInScript;
 
     Text actualNum;
 
-   
+    int levelNum;
 
     bool onButton;
 
@@ -30,6 +31,8 @@ public class menuManager : MonoBehaviour {
     void Start () {
         onButton = false;
         actualNum = playerNumber.GetComponent<Text>();
+        levelNum = 0;
+        
 	}
 	
 	// Update is called once per frame
@@ -71,13 +74,22 @@ public class menuManager : MonoBehaviour {
         {
             if (actualNum.text == "1")
             {
+                
                 Instantiate(playerPrefab, player1Spawn.transform.position, Quaternion.identity);
                 menu.SetActive(false);
-                levels[0].SetActive(true);
+                Instantiate(levels[levelNum]);
 
+                level1PreFab = GameObject.FindGameObjectWithTag("Level");
+                notGoingInScript = level1PreFab.GetComponent<notGoingIn>();
+                
                 mainCamera.enabled = false;
                 playCamera.enabled = true;
+
                 playArea.SetActive(true);
+                Debug.Log("playarea should be working");
+                notGoingInScript.spawnStart();
+
+                
             }
             else
             {

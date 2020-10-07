@@ -28,13 +28,15 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static void flagDestroyed()
+    public async static void flagDestroyed()
     {
         //Pause game for 3 seconds
+         
+        await System.Threading.Tasks.Task.Delay(2000);
         //display game over screen
         endGameScreen.SetActive(true);
         playArea.SetActive(false);
 
-    //go to menu
+        //go to menu
     }
 }
