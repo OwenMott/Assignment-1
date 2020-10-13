@@ -13,6 +13,7 @@ public class enemyAI : MonoBehaviour
     int randomNumber;
     int moveRandomNumber;
     int moveChanceRandomNumber;
+    bool gameIsOver;
 
     public GameObject bulletPrefab;
     Rigidbody2D rb2d;
@@ -110,6 +111,12 @@ public class enemyAI : MonoBehaviour
                 enemyFire();
             }
 
+        }
+
+        gameIsOver = GameManager.gameIsOver;
+        if (gameIsOver)
+        {
+            Destroy(gameObject);
         }
     }
         //chance to move

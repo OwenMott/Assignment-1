@@ -124,10 +124,12 @@ public class playerManager : MonoBehaviour {
 
         }
 
-        if (DateTime.Now > timeSinceShot + shootCooldown)
+        if (DateTime.Now > timeSinceShot + shootCooldown) //&& canShoot == false
         {
 
             canShoot = true;
+
+            //play a ding noise
 
             //Debug.Log(DateTime.Now);
             //Debug.Log(timeSinceShot + shootCooldown);

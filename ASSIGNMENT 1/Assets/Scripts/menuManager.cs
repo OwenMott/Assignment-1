@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class menuManager : MonoBehaviour {
-
-
+    private const int amount = 20;
     public GameObject player;
     public GameObject playerPrefab;
     public GameObject player1Spawn;
@@ -87,7 +86,7 @@ public class menuManager : MonoBehaviour {
 
                 playArea.SetActive(true);
                 Debug.Log("playarea should be working");
-                notGoingInScript.spawnStart();
+                notGoingInScript.spawnStart(amount);
 
                 
             }

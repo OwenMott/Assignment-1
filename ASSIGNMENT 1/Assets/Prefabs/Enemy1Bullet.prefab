@@ -135,3 +135,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallExplosion: {fileID: 1115373841525879488, guid: c47d85afdb4c51044a5de23612a673f1,
     type: 3}
+  playerPrefab: {fileID: 1185113106464554, guid: 1b5985b11f43b67408ee00bbdf14f6f9,
+    type: 3}
